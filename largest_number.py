@@ -13,32 +13,27 @@ Sample Input
 Sample Output
 412
 """
+
+from decimal import *
+
 try:
-    my_input=input()
-    #print(my_input)
+    my_input = input()
 except EOFError:
     pass
- 
-my_input_li=my_input.split()
-#print("my_input_li ",my_input_li)
-no=my_input_li[0]
-# print("no ", no)
-# print("len(no) ",len(no)  )
-# print("int(my_input_li[1]) ",int(my_input_li[1])  )
-len_allow=len(no)-int(my_input_li[1])
-#print("len_allow ", len_allow)
- 
-max_no1=0
-#len(no)
-for i in range(len(no)):
-    max_no=no[i]
-    for j in range(i+1,len(no)):
-        if len(max_no)<len_allow:
-                max_no=max_no+no[j]
-                #print("max_no : ",max_no)
-                #print("max_no1 ", max_no1)
-                if max_no1<int(max_no):
-                    max_no1=int(max_no)
-                    #print("max_no1 : ",max_no1)
- 
-print(max_no1)
+
+my_input_li = my_input.split()
+n = int(my_input_li[0])
+k = int(my_input_li[1])
+#print(n, k)
+for j in range(k):
+    ans = 0
+    i = 1
+    while (int(n / i) > 0): 
+        temp_n = int(n/(i*10))*i+(n % i)
+        i = i*10
+        ans = max(ans, temp_n)
+    n = int(ans)
+    #print(n)
+
+    
+print(n)
